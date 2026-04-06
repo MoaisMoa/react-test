@@ -30,7 +30,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FileController {
   private final FileService fileService;
-  // ✨ sp-crud
   
   @GetMapping()
   public ResponseEntity<?> getAll() {
@@ -104,7 +103,7 @@ public class FileController {
       }
   }
 
-  // 파일 선택 삭제
+
   @DeleteMapping("")
   public ResponseEntity<?> deleteFiles(
     @RequestParam(value = "noList", required = false) List<Long> noList,
@@ -118,14 +117,14 @@ public class FileController {
     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
   }
 
-  // 파일 다운로드
+
   @GetMapping("/download/{id}")
   public void fileDownload(
     @PathVariable("id") String id, HttpServletResponse response) throws Exception {
       fileService.download(id, response);
   }
 
-  // 썸네일 이미지
+
   @GetMapping("/img/{id}")
   public void thumbnailImg(
     @PathVariable("id") String id, HttpServletResponse response) throws Exception {

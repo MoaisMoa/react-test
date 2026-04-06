@@ -39,16 +39,16 @@ function ProductList() {
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
-            <article key={product.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+            <div key={product.id} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <h2 className="text-lg font-semibold text-slate-900">{product.name}</h2>
               <dl className="mt-3 space-y-1 text-sm text-slate-600">
                 <div className="flex justify-between">
-                  <dt>가격</dt>
-                  <dd className="font-medium text-slate-800">{Number(product.price).toLocaleString()}원</dd>
+                  <span>가격</span>
+                  <span className="font-medium text-slate-800">{Number(product.price).toLocaleString()}원</span>
                 </div>
                 <div className="flex justify-between">
-                  <dt>재고</dt>
-                  <dd className="font-medium text-slate-800">{product.stock}개</dd>
+                  <span>재고</span>
+                  <span className="font-medium text-slate-800">{product.stock}개</span>
                 </div>
               </dl>
 
@@ -56,19 +56,19 @@ function ProductList() {
                 <button
                   type="button"
                   onClick={() => navigate(`/products/${product.id}`)}
-                  className="inline-flex flex-1 items-center justify-center rounded-lg bg-slate-800 px-3 py-2 text-sm font-medium text-white transition hover:bg-slate-700"
-                >
+                  className="inline-flex flex-1 items-center justify-center rounded-lg bg-slate-800 px-3 py-2
+                  text-sm font-medium text-white transition hover:bg-slate-700">
                   상세보기
                 </button>
                 <button
                   type="button"
                   onClick={() => handleDelete(product.id)}
-                  className="inline-flex flex-1 items-center justify-center rounded-lg bg-rose-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-rose-500"
-                >
+                  className="inline-flex flex-1 items-center justify-center rounded-lg bg-rose-600 px-3 py-2
+                  text-sm font-medium text-white transition hover:bg-rose-500">
                   삭제
                 </button>
               </div>
-            </article>
+            </div>
           ))}
         </div>
       )}

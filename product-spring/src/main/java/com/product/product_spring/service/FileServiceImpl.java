@@ -248,32 +248,20 @@ public class FileServiceImpl implements FileService {
         filePath = imgFile.getPath();
         }
 
-        // 확장자 
-        // C:/upload/2026.02.06-강아지.png
         String ext = filePath.substring(filePath.lastIndexOf(".") + 1);
         String mimeType = MimeTypeUtils.parseMimeType("image/" + ext).toString();
         MediaType mType = MediaType.valueOf(mimeType);
 
         if( mType == null ) {
-        // 이미지 타입이 아닌 경우
         response.setContentType(MediaType.IMAGE_PNG_VALUE);
         imgFile = resource.getFile();
         } else {
-        // 이미지 타입
         response.setContentType(mType.toString());
         }
 
-        FileInputStream fis = new FileInputStream(imgFile);     // 파일 입력
-        ServletOutputStream sos = response.getOutputStream();   // 파일 출력
-        int result = FileCopyUtils.copy(fis, sos);              // 파일 전송
+        FileInputStream fis = new FileInputStream(imgFile);
+        ServletOutputStream sos = response.getOutputStream();
+        int result = FileCopyUtils.copy(fis, sos);
         return result > 0;
     }
-
-
-
-
-
-
-
-
 }

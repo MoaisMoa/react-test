@@ -1,4 +1,3 @@
-// App.js — 라우팅 기본 구조
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './assets/components/Navbar';
 import ProductList from './pages/ProductList';
