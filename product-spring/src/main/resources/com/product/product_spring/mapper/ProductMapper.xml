@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "<http://mybatis.org/dtd/mybatis-3-mapper.dtd>">
+
+<mapper namespace="com.product.product_spring.mapper.ProductMapper">
+
+    <!-- 전체 조회 -->
+    <select id="selectAll" resultType="com.product.product_spring.dto.Product">
+        SELECT * FROM product ORDER BY created_at DESC
+    </select>
+
+    <!-- 단건 조회 -->
+    <select id="selectOne" parameterType="String" resultType="com.product.product_spring.dto.Product">
+        SELECT * FROM product WHERE id = #{id}
+    </select>
+
+    <!-- 등록 — UUID는 Controller에서 생성 후 product 객체에 세팅하여 전달 -->
+    <insert id="insert" parameterType="com.product.product_spring.dto.Product">
+        INSERT INTO product (id, name, price, stock, created_at)
+        VALUES (#{id}, #{name}, #{price}, #{stock}, NOW())
+    </insert>
+
+    <!-- 수정 -->
+    <update id="update" parameterType="com.product.product_spring.dto.Product">
+        UPDATE product
+        SET name = #{name}, price = #{price}, stock = #{stock}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 삭제 -->
+    <delete id="delete" parameterType="String">
+        DELETE FROM product WHERE id = #{id}
+    </delete>
+
+</mapper>
